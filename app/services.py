@@ -3,9 +3,9 @@ from app.config.redis import redis_obj
 
 class Login:
     @staticmethod
-    def get_otp_of_user(phone, otp):
-       user_otp =  redis_obj.hget(f"USER:{phone}", otp)
-       return user_otp
+    def get_otp_of_user(phone):
+       user_otp =  redis_obj.hget(f"USER:{phone}", "otp")
+       return int(user_otp)
 
 class OTP:
     @staticmethod

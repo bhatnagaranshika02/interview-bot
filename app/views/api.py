@@ -27,10 +27,11 @@ class LoginView(Resource):
     def post(self):
         payload = request.get_json()
 
-        phone = payload["phone"]
+        phone = int(payload["phone"])
         otp = int(payload["otp"])
 
-        user_otp = Login.get_otp_of_user(phone, otp)
+        user_otp = Login.get_otp_of_user(phone)
+  
         if otp == user_otp:
             return {
                 "success": "Login Successful"
